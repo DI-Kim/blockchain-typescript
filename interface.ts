@@ -31,7 +31,7 @@ interface User2 extends Player2 {
   readonly name: string;
 }
 
-const bigPerson: User2 = {
+const daein: User2 = {
   nickname: "bigPerson",
   healthBar: 10,
   team: "red",
