@@ -1,0 +1,7 @@
+{
+  "include": ["src", "lecture"],
+  "compilerOptions": {
+    "outDir": "build",
+    "target": "ES6"
+  }
+}

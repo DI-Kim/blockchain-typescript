@@ -1,0 +1,14 @@
+{
+  "name": "blockchain-typescript",
+  "version": "1.0.0",
+  "description": "make Block Chain with TypeScript",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
