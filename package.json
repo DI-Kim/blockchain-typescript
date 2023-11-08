@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "make Block Chain with TypeScript",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/node": "^20.9.0",
+    "nodemon": "^3.0.1"
   }
 }

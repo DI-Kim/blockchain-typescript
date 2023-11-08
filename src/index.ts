@@ -1,8 +1,52 @@
-import { init, exit } from "myPackage";
+import crypto from "crypto";
 
-init({
-  debug: true,
-  url: "true",
-});
+interface BlockShape {
+  hash: string;
+  prevHash: string;
+  height: number;
+  data: string;
+}
 
-exit(30);
+class Block implements BlockShape {
+  public hash: string;
+  constructor(public prevHash: string, public height: number, public data: string) {
+    this.hash = Block.caculateHash(prevHash, height, data);
+  }
+  static caculateHash(prevHash: string, height: number, data: string) {
+    const toHash = `${prevHash}${height}${data}`;
+    return crypto.createHash("sha256").update(toHash).digest("hex");
+  }
+}
+
+class BlockChain {
+  private blocks: Block[];
+  constructor() {
+    this.blocks = [];
+  }
+  private getPrevHash() {
+    if (this.blocks.length === 0) {
+      return "";
+    }
+    return this.blocks[this.blocks.length - 1].hash;
+  }
+  public addBlock(data: string) {
+    const newBlock = new Block(this.getPrevHash(), this.blocks.length + 1, data);
+    this.blocks.push(newBlock);
+  }
+  public getBlocks() {
+    return [...this.blocks];
+  }
+}
+
+const blockchain = new BlockChain();
+
+blockchain.addBlock("First one");
+blockchain.addBlock("Second one");
+blockchain.addBlock("Third one");
+
+console.log(blockchain.getBlocks());
+
+blockchain.getBlocks()[blockchain.getBlocks().length - 1].data = "hell 12312312312";
+
+console.log(blockchain.getBlocks());
+console.log(blockchain.getBlocks());
